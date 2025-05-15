@@ -25,7 +25,7 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get("https://mini-ecomm-server.onrender.com/api/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Fetch error:", err);
@@ -35,7 +35,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/products", form);
+      const res = await axios.post("https://mini-ecomm-server.onrender.com/api/products", form);
       setProducts([res.data, ...products]);
       setForm({ name: "", price: "", description: "", image: "" });
       setTab(TabEnum.VIEW);
@@ -52,7 +52,7 @@ function App() {
         return;
       }
       const res = await axios.get(
-        `http://localhost:5000/api/search?query=${search}`
+        `https://mini-ecomm-server.onrender.com/api/search?query=${search}`
       );
       setProducts(res.data);
     } catch (err) {
@@ -65,7 +65,7 @@ function App() {
       return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`);
+      await axios.delete(`https://mini-ecomm-server.onrender.com/api/products/${id}`);
       setProducts(products.filter((product) => product.id !== id));
     } catch (err) {
       console.error("Delete error:", err);
